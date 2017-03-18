@@ -1,0 +1,47 @@
+<?php $__env->startSection('title'); ?>
+    添加学生
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2>添加学生</h2>
+                <hr />
+
+                <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                <div class="form-group">
+                    <?php echo Form::model($user = new \App\User, ['url' => 'admin/', 'class' => 'form-horizontal']); ?>
+
+                        <div class="form-group">
+                            <?php echo Form::label('id', '学号: ', ['class' => 'control-label col-md-1']); ?>
+
+                            <div class="col-md-4">
+                                <?php echo Form::text('id', old('id'), ['class' => 'form-control']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('name', '姓名: ', ['class' => 'control-label col-md-1']); ?>
+
+                            <div class="col-md-4">
+                                <?php echo Form::text('name', old('name'), ['class' => 'form-control', 'required']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <?php echo Form::submit('完成,创建', ['class' => 'btn btn-success form-control']); ?>
+
+                            </div>
+                        </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+            <?php echo $__env->make('Admin.right_bar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

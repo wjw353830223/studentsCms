@@ -1,0 +1,66 @@
+<div class="modal fade" id="myModal<?php echo e($user->id); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"><?php echo e($user->name); ?></h4>
+            </div>
+            <?php echo Form::model($user->grade, ['url' => '/admin/upload_grade', 'class' => 'form-horizontal']); ?>
+
+
+              <div class="modal-body">
+
+                <?php echo Form::hidden('user_id', $user->id); ?>
+
+                <h4>
+                  <?php echo Form::label('math', '高数: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('math', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+                <h4>
+                  <?php echo Form::label('english', '英语: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('english', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+                <h4>
+                  <?php echo Form::label('c', 'C语言: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('c', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+                <h4>
+                  <?php echo Form::label('sport', '体育: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('sport', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+                <h4>
+                  <?php echo Form::label('think', '思修: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('think', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+                <h4>
+                  <?php echo Form::label('soft', '软件: ', ['class' => 'control-label']); ?>
+
+                  <?php echo Form::text('soft', null, ['class' => 'form-control', 'required']); ?>
+
+                </h4>
+
+              </div>
+
+              <div class="modal-footer">
+                <?php echo Form::button('关闭', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']); ?>
+
+                <?php echo Form::submit('提交', ['class' => 'btn btn-success']); ?>
+
+              </div>
+
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<?php $__env->startSection('title'); ?>
+    修改个人信息
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/stu/home"><button class="btn btn-info">个人信息</button></a>
+                </div>
+
+                <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                <div class="panel-body">
+                    <?php echo Form::open(['url' => '/stu/update', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+
+                        <div class="form-group">
+                            <?php echo Form::label('id', '学号: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::text('id', Auth::user()->id, ['class' => 'form-control', 'readonly']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('name', '姓名: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::text('name', Auth::user()->name, ['class' => 'form-control', 'readonly']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('sex', '性别: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::select('sex', ['男' => '男', '女' => '女'], Auth::user()->sex, ['class' => 'form-control']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('phone', '手机: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::text('phone', Auth::user()->phone, ['class' => 'form-control']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('pro_class', '班级: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::text('pro_class', Auth::user()->pro_class, ['class' => 'form-control']); ?>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php echo Form::label('email', '邮箱: ', ['class' => 'col-md-2 control-label']); ?>
+
+                            <div class="col-md-6">
+                                <?php echo Form::email('email', Auth::user()->email, ['class' => 'form-control']); ?>
+
+                            </div>
+                        </div>
+                        <div class="group">
+                            <?php echo Form::submit('确认修改', ['class' => 'btn btn-success form-control']); ?>
+
+                        </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

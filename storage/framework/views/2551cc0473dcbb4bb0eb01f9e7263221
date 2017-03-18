@@ -1,0 +1,13 @@
+<button type="button" class="btn btn-warning"
+    data-container="body" data-toggle="popover" data-placement="bottom"
+    title="<?php echo e(Auth::user()->name); ?>--成绩"
+    data-content="
+        ************** 高数 -- <?php echo e($grade->math); ?> **************
+        ************** 英语 -- <?php echo e($grade->english); ?> **************
+        ************ C语言 -- <?php echo e($grade->c); ?> **************
+        ************** 体育 -- <?php echo e($grade->sport); ?> **************
+        ************** 思修 -- <?php echo e($grade->think); ?> **************
+        ************** 软件 -- <?php echo e($grade->soft); ?> **************
+    ">
+    点击,查看成绩
+</button>

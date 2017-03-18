@@ -1,0 +1,56 @@
+<?php $__env->startSection('title'); ?>
+    管理员
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+
+                <?php echo $__env->make('errors.list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                <h3 align="center">学生信息表</h3>
+                <table class="table table-hover">
+                    <tr>
+                        <td>学号</td>
+                        <td>姓名</td>
+                        <td>性别</td>
+                        <td>手机</td>
+                        <td>班级</td>
+                        <td>邮箱</td>
+                        <td>操作</td>
+                    </tr>
+                    <?php if(count($users)): ?>
+                        <?php foreach($users as $user): ?>
+                            <tr>
+                                <td><?php echo e($user->id); ?></td>
+                                <td><?php echo e($user->name); ?></td>
+                                <td><?php echo e($user->sex); ?></td>
+                                <td><?php echo e($user->phone); ?></td>
+                                <td><?php echo e($user->pro_class); ?></td>
+                                <td><?php echo e($user->email); ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#myModal<?php echo e($user->id); ?>">更新分数</button>
+                                    <form action="<?php echo e(url('admin/'.$user->id)); ?>" style='display: inline' method="post">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('确定删除?')">删除</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            <?php echo $__env->make('Admin.upload_grade', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <h1>没有学生名单,请管理员添加</h1>
+                    <?php endif; ?>
+                </table>
+                <?php echo $users->render(); ?>
+            </div>
+            <?php echo $__env->make('Admin.right_bar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

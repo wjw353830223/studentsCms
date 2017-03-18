@@ -1,0 +1,13 @@
+<?php if(Session::has('message')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session('message')); ?>
+
+    </div>
+<?php endif; ?>
+
+<?php if(Session::has('message_warning')): ?>
+    <div class="alert alert-warning">
+        <?php echo e(session('message_warning')); ?>
+
+    </div>
+<?php endif; ?>

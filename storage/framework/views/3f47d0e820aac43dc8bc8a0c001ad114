@@ -1,0 +1,44 @@
+<?php $__env->startSection('title'); ?>
+    学生成绩列表
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h3 align="center">学生成绩表</h3>
+                <table class="table table-striped" id="sortTable">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">学号 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>姓名 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>高数 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>英语 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>C语言 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>体育 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>思修 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                            <th>软件 <a href="javascript:void(0)"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></th>
+                        </tr>
+                    </thead>
+
+                    <?php foreach($users as $user): ?>
+                        <tr class="myGrade">
+                            <td><?php echo e($user->id); ?></td>
+                            <td><?php echo e($user->name); ?></td>
+                            <td><?php echo e($user->grade->math); ?></td>
+                            <td><?php echo e($user->grade->english); ?></td>
+                            <td><?php echo e($user->grade->c); ?></td>
+                            <td><?php echo e($user->grade->sport); ?></td>
+                            <td><?php echo e($user->grade->think); ?></td>
+                            <td><?php echo e($user->grade->soft); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+
+            <?php echo $__env->make('Admin.right_bar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
